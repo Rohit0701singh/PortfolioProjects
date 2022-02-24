@@ -92,7 +92,7 @@ Join CovidVaccination t2
 	On t1.death_id = t2.vaccination_id
 where t1.continent is not null 
 group by t1.continent, t1.location, t1.date, t1.population
-order by 1,2,3
+/*order by 1,2,3*/
 )
 Select *, (RollingPeopleVaccinated/Population)*100 as PercentPeopleVaccinated
 From PopvsVac
