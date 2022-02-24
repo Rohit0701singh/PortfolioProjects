@@ -81,7 +81,7 @@ order by 1,2,3
 /* 6. View for People Vaccinated vs Population */
 
 
-With PopvsVac (Continent, Location, Date, Population, New_Vaccinations, RollingPeopleVaccinated)
+With PopvsVac (Continent, Location, Date, Population, RollingPeopleVaccinated)
 as
 (
 Select t1.continent, t1.location, t1.date, t1.population
