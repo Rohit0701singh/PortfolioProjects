@@ -1,3 +1,10 @@
+/*
+Covid 19 Data Exploration 
+Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+*/
+
+------------------------
+
 /*TEST*/
 select * from CovidDeath
 select * from CovidVaccination
@@ -6,6 +13,8 @@ select * from CovidVaccination
 select location, date, total_cases, new_cases,total_deaths, population
 from CovidDeath
 order by 1,2
+
+------------------------
 
 /* Total Cases vs Total Deaths*/
 select location, sum(new_cases), sum(new_deaths), round((sum(new_deaths)/sum(new_cases)*100),2) as DeathPercentage
@@ -18,6 +27,10 @@ select location, population, sum(new_cases), round((sum(new_cases)/population)*1
 from CovidDeath
 where location not in ("Asia","North America","Africa","South America","Oceania","Antartica","Europe")
 group by location,population
+
+-------------------------------
+
+/* Selecting specific country using where clause*/
 
 /* Country wise Total Cases vs Total Deaths*/
 select location, sum(new_cases), sum(new_deaths), round((sum(new_deaths)/sum(new_cases)*100),2) as DeathPercentage
@@ -33,7 +46,10 @@ where location not in ("Asia","North America","Africa","South America","Oceania"
 and location = 'India'
 group by location,population
 
+------------------------
 
+/*Checking for Fatality rate and infection rates*/
+/*country wise*/
 /* Top ten countries with highest fatality rate */
 select location, sum(new_cases), sum(new_deaths), round((sum(new_deaths)/sum(new_cases)*100),2) as DeathPercentage
 from CovidDeath
@@ -72,6 +88,10 @@ group by location, population
 order by sum(new_cases) DESC
 limit 10
 
+------------------------
+
+/*Checking for Fatality rate and infection rates*/
+/*continent wise*/
 /* Continents with highest fatality rate */
 select continent, sum(new_cases), sum(new_deaths), round((sum(new_deaths)/sum(new_cases)*100),2) as DeathPercentage
 from CovidDeath
@@ -101,6 +121,10 @@ where location in ("Asia","North America","Africa","South America","Oceania","An
 group by location,population
 order by max(total_cases) DESC
 
+------------------------
+
+/*Checking for Fatality rate and infection rates*/
+/*Globally*/
 /* Global Fatality rate*/
 select sum(new_cases), sum(new_deaths), round((sum(new_deaths)/sum(new_cases)*100),2) as DeathPercentage
 from CovidDeath
@@ -113,6 +137,8 @@ where continent is not null
 group by date
 order by InfectionPercentage DESC
 limit 1
+
+------------------------
 
 /* Total Population vs Total Vaccination */
 select t1.location,t1.date, t1.population, t2.new_vaccinations
@@ -128,6 +154,7 @@ on t1.death_id = t2.vaccination_id
 where t1.location ='India'
 
 /* Population vs Rolling Vaccination */
+/* RollingVaccination shows cumulative new vaccinations data */
 select t1.location, t1.date, t1.population, t2.new_vaccinations,
 sum(t2.new_vaccinations) over (partition by t1.location order by t1.location,t1.date) as RollingVaccinations
 from covidDeath t1  
@@ -136,8 +163,11 @@ on t1.death_id = t2.vaccination_id
 where t1.location not in ("Asia","North America","Africa","South America","Oceania","Antartica","Europe")
 order by t1.location,t1.date
 
+------------------------
+
 /* Percentage Rolling Vaccination vs Population */
-/*using CTE method*/
+
+/* 1. using CTE method*/
 with PopvsVac (location, date, population, new_vaccinations,RollingVaccinations)
 as 
 (
@@ -150,10 +180,10 @@ where t1.location not in ("Asia","North America","Africa","South America","Ocean
 )
 select *,(RollingVaccinations/population)*100
 from PopvsVac
-/*to find Max(RollingVaccinations) need to remove t1.date*/
+/*to find Max(RollingVaccinations) need to deselect t1.date */
 
-/* Percentage Rolling Vaccination vs Population */
-/*using Temp Table Method*/
+
+/* 2. using Temp Table Method*/
 Drop Table if exist PopvsVac2
 create TABLE PopvsVac2
 (
@@ -173,6 +203,8 @@ on t1.death_id = t2.vaccination_id
 
 select *,(RollingVaccinations/population)*100
 from PopvsVac2
+
+------------------------
 
 /* Creating view for Percentage Rolling Vaccination vs Population */
 create view Percetagepopulationvaccinated
