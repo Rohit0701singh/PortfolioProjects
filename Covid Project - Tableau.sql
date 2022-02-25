@@ -96,3 +96,9 @@ group by t1.continent, t1.location, t1.date, t1.population
 )
 Select *, (RollingPeopleVaccinated/Population)*100 as PercentPeopleVaccinated
 From PopvsVac
+
+
+/*
+Visit the link to check out the dashboard
+https://public.tableau.com/app/profile/rohit.singh3551/viz/CovidDashboard_16457861787110/CovidDashboard?publish=yes
+*/
