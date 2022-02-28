@@ -8,7 +8,7 @@
 -- 1. ENERGY SOURCE'S PRODUCTION PER CAPITA --
 
 -- Checking for Top 10 countries with highest average coal production per capita in the last 10 years
--- Can check for any energy souce (eg., oil_prod_per_capita, etc)
+-- Can check for any energy source (eg., oil_prod_per_capita, etc)
 -- Can check for avg, max, min, etc on aggregate clause (eg., max(coal_prod_per_capita))
 
 select country, round(avg(coal_prod_per_capita),2) as 'Average Coal Production per capita'
