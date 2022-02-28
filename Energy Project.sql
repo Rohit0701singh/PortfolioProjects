@@ -157,7 +157,6 @@ when round(100-(t1.coal_share_elec + t3.gas_share_elec+ t4.hydro_share_elec+ t6.
 else round(100-(t1.coal_share_elec + t3.gas_share_elec+ t4.hydro_share_elec+ t6.nuclear_share_elec+ t7.oil_share_elec+ t8.solar_share_elec+ t9.wind_share_elec+ t10.other_renewables_share_elec),2) 
 end as 'share from other sources'
 
-
 from coal t1
 
 join gas t3
