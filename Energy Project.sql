@@ -5,6 +5,21 @@
 -------------------------
 
 
+-- 0. Sanity check if duplicate data points exists --
+-- Checking if any entries made against an year for a country twice, i.e., Afganistan should have only 20 number of rows for years between 2001 to 2020 --
+
+select country, year, count(*)
+from elecenergy
+group by country, year
+having count(*)>1
+
+-- Can use count(year) as well in case there is any NULL value expected in that field --
+
+
+-------------------------
+
+
+
 -- 1. ENERGY SOURCE'S PRODUCTION PER CAPITA --
 
 
