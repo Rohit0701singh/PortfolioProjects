@@ -29,7 +29,7 @@ having count(*)>1
 
 select country, round(avg(other_renewable_consumption),2) as 'Average other renewable Consumption'
 from otherrenewable
-where country not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where country not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 and year between 1980 and 2021
 group by country
 order by round(avg(other_renewable_consumption),2) desc
@@ -115,7 +115,7 @@ limit 10
 
 select country, round(avg(electricity_generation),2) as 'Average electricity gerenated'
 from Elecenergy 
-where country not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where country not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 and year between 2010 and 2019
 group by country
 order by round(avg(electricity_generation),2) desc
@@ -125,7 +125,7 @@ limit 10
 
 select year, round(avg(per_capita_electricity),2) as 'Average electricity gerenated per capita'
 from Elecenergy 
-where country not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where country not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 group by year
 order by year
 
@@ -141,7 +141,7 @@ order by year
 
 select country, round(avg(primary_energy_consumption),2) as 'Average energy consumed'
 from Elecenergy 
-where country not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where country not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 and year between 2010 and 2019
 group by country
 order by round(avg(primary_energy_consumption),2) desc
@@ -151,7 +151,7 @@ limit 10
 
 select year, round(avg(primary_energy_consumption),2) as 'Average energy consumed per capita'
 from Elecenergy  
-where country not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where country not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 group by year
 
 
@@ -165,7 +165,7 @@ group by year
 
 select entity, round(avg(percent_renewable),2) as 'Electicity generated from renewable sources'
 from renewableshare
-where entity not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where entity not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 and year between 2010 and 2019
 group by entity
 order by round(avg(percent_renewable),2) desc
@@ -175,7 +175,7 @@ limit 10
 
 select year, round(avg(percent_renewable),2) as 'Electricity generated from renewable sources'
 from renewableshare
-where entity not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where entity not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 group by year
 
 
@@ -226,7 +226,7 @@ on t1.id = t9.id
 join otherrenewable t10
 on t1.id = t10.id
 
-where t1.country not in ("Asia Pacific","Africa","Asia","Europe","North America","Sounth America","South & Central America","Middle East","OPEC","CIS","USSR")
+where t1.country not in ("Asia Pacific","Africa","Asia","Europe","North America","South America","South & Central America","Middle East","OPEC","CIS","USSR")
 
 -- Year wise
 
