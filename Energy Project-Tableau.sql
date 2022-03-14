@@ -5,7 +5,7 @@
 --------------
 
 
--- 1. Data for Consumption of Sources in Total
+-- 1. Data for Consumption of Resources in Total
 
 select
 t1.country,
@@ -42,7 +42,7 @@ where t1.country not in ("Asia Pacific","Africa","Asia","Europe","North America"
 ---------------------
 
 
--- 2. Data for consumption of sources per capita
+-- 2. Data for consumption of Resources per capita
 
 select
 t1.country,
@@ -81,7 +81,7 @@ group by t1.country,t1.year
 -----------------------------
 
 
--- 3. Data for Production of Sources in Total
+-- 3. Data for Production of Resources in Total
 
 select
 t1.country,
@@ -106,7 +106,7 @@ where t1.country not in ("Asia Pacific","Africa","Asia","Europe","North America"
 ------------------------
 
 
--- 4. Data for Production of sources per capita
+-- 4. Data for Production of Resources per capita
 
 select
 t1.country,
@@ -171,7 +171,7 @@ where t1.entity not in ("Asia Pacific","Africa","Asia","Europe","North America",
 ------------------
 
 
--- 8. Data for Electricity generated per source
+-- 8. Data for Electricity generated per resource
 
 select
 t1.country, 
@@ -215,7 +215,7 @@ where t1.country not in ("Asia Pacific","Africa","Asia","Europe","North America"
 ----------------------
 
 
--- 9. Data for energy generated from Renewable sources
+-- 9. Data for energy generated from Renewable resources
 
 select entity,year, round(percent_renewable,2) as 'Electricity generated from renewable sources'
 from renewableshare
