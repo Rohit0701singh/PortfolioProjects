@@ -276,7 +276,7 @@ from PopvsVac2
 -- Creating view for Percentage Rolling Vaccination vs Population
 
 
-create view Percetagepopulationvaccinated
+create view Percetagepopulationvaccinated as
 select t1.location, t1.date, t1.population, t2.new_vaccinations,
 sum(t2.new_vaccinations) over (partition by t1.location order by t1.location,t1.date) as RollingVaccinations
 from covidDeath t1
